@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
+
+.main {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.pallettes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.title {
+  text-align: center;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 2.8rem;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #333;
+}
+
+.pallette {
+  display: flex;
+  flex-direction: column;
+  padding: 0.05rem;
+  font-family: inherit;
+}
+
+.palletteTitle {
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.swatch {
+  flex: 1 1 auto;
+  text-transform: lowercase;
+  padding: 2rem 4rem;
+  text-align: center;
+  color: white;
+  margin: 0.2rem;
+  font-family: inherit;
+  font-weight: 300;
+}
+
+.swatch a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer {
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: #333;
+  padding-top: 16px;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+}

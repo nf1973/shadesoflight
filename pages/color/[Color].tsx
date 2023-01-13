@@ -1,13 +1,18 @@
 import Head from "next/head";
-//import Main from "../components/elements/Main/Main";
-
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-const DynamicMain = dynamic(() => import("../components/elements/Main/Main"), {
-  ssr: false,
-});
+const DynamicMain = dynamic(
+  () => import("../../components/elements/Main/Main"),
+  {
+    ssr: false,
+  }
+);
 
-export default function Home() {
+const Color = () => {
+  const router = useRouter();
+  //const { Color } = router.query;
+
   return (
     <>
       <Head>
@@ -16,7 +21,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DynamicMain />
+      <DynamicMain {...router.query} />
     </>
   );
-}
+};
+
+export default Color;
