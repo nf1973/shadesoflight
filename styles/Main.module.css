@@ -51,6 +51,7 @@
   margin: 0.2rem;
   font-family: inherit;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .swatch a {

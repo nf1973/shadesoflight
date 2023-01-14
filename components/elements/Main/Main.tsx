@@ -1,7 +1,6 @@
 import styles from "../../../styles/Main.module.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-let col = convertRandomColor(Math.floor(Math.random() * 16777215));
 
 function convertRandomColor(randomColor: number) {
   let ret = randomColor.toString(16);
@@ -59,8 +58,10 @@ function decToHex(dec: number) {
   return val.toUpperCase();
 }
 
-function Main(props: any) {
-  const [selectedColor, setSelectedColor] = useState("");
+function Main() {
+  const [selectedColor, setSelectedColor] = useState(
+    convertRandomColor(Math.floor(Math.random() * 16777215))
+  );
   const [shade1, setShade1] = useState("");
   const [shade2, setShade2] = useState("");
   const [shade3, setShade3] = useState("");
@@ -72,16 +73,7 @@ function Main(props: any) {
   const [complShade4, setComplShade4] = useState("");
   const [complShade5, setComplShade5] = useState("");
 
-  //TODO: Needs to check that props.Color is actually valid as well as present!
   useEffect(() => {
-    if (!selectedColor) {
-      if (props.Color) {
-        setSelectedColor("#" + props.Color);
-      } else {
-        setSelectedColor(col);
-      }
-    }
-
     //Calculate complimentary color
 
     const complimentaryColor = calculateComplColor(selectedColor);
@@ -139,10 +131,14 @@ function Main(props: any) {
     setComplShade3(complimentaryColor);
     setComplShade4(rgbToHex(complShade4R, complShade4G, complShade4B));
     setComplShade5(rgbToHex(complShade5R, complShade5G, complShade5B));
-  }, [selectedColor, props.Color]);
+  }, [selectedColor]);
 
-  function showColor(event: any) {
+  function showColorFromPicker(event: any) {
     setSelectedColor(event.target.value);
+  }
+
+  function showColor(color: any) {
+    setSelectedColor(color);
   }
 
   return (
@@ -154,32 +150,37 @@ function Main(props: any) {
           <div
             style={{ backgroundColor: shade1 }}
             className={`${styles["swatch"]} ${styles["sel1"]}`}
+            onClick={() => showColor(shade1)}
           >
-            <Link href={`/color/${shade1.slice(1)}`}>{shade1}</Link>
+            {shade1}
           </div>
           <div
             style={{ backgroundColor: shade2 }}
             className={`${styles["swatch"]} ${styles["sel2"]}`}
+            onClick={() => showColor(shade2)}
           >
-            <Link href={`/color/${shade2.slice(1)}`}>{shade2}</Link>
+            {shade2}
           </div>
           <div
             style={{ backgroundColor: shade3 }}
             className={`${styles["swatch"]} ${styles["sel3"]}`}
+            onClick={() => showColor(shade3)}
           >
-            <Link href={`/color/${shade3.slice(1)}`}>{shade3}</Link>
+            {shade3}
           </div>
           <div
             style={{ backgroundColor: shade4 }}
             className={`${styles["swatch"]} ${styles["sel4"]}`}
+            onClick={() => showColor(shade4)}
           >
-            <Link href={`/color/${shade4.slice(1)}`}>{shade4}</Link>
+            {shade4}
           </div>
           <div
             style={{ backgroundColor: shade5 }}
             className={`${styles["swatch"]} ${styles["sel5"]}`}
+            onClick={() => showColor(shade5)}
           >
-            <Link href={`/color/${shade5.slice(1)}`}>{shade5}</Link>
+            {shade5}
           </div>
         </div>
         <div className={styles.pallette}>
@@ -187,32 +188,37 @@ function Main(props: any) {
           <div
             style={{ backgroundColor: complShade1 }}
             className={`${styles["swatch"]} ${styles["comp1"]}`}
+            onClick={() => showColor(complShade1)}
           >
-            <Link href={`/color/${complShade1.slice(1)}`}>{complShade1}</Link>
+            {complShade1}
           </div>
           <div
             style={{ backgroundColor: complShade2 }}
             className={`${styles["swatch"]} ${styles["comp2"]}`}
+            onClick={() => showColor(complShade2)}
           >
-            <Link href={`/color/${complShade2.slice(1)}`}>{complShade2}</Link>
+            {complShade2}
           </div>
           <div
             style={{ backgroundColor: complShade3 }}
             className={`${styles["swatch"]} ${styles["comp3"]}`}
+            onClick={() => showColor(complShade3)}
           >
-            <Link href={`/color/${complShade3.slice(1)}`}>{complShade3}</Link>
+            {complShade3}
           </div>
           <div
             style={{ backgroundColor: complShade4 }}
             className={`${styles["swatch"]} ${styles["comp4"]}`}
+            onClick={() => showColor(complShade4)}
           >
-            <Link href={`/color/${complShade4.slice(1)}`}>{complShade4}</Link>
+            {complShade4}
           </div>
           <div
             style={{ backgroundColor: complShade5 }}
             className={`${styles["swatch"]} ${styles["comp5"]}`}
+            onClick={() => showColor(complShade5)}
           >
-            <Link href={`/color/${complShade5.slice(1)}`}>{complShade5}</Link>
+            {complShade5}
           </div>
         </div>
       </div>
@@ -225,7 +231,7 @@ function Main(props: any) {
           type="color"
           id="colorpicker"
           value={selectedColor}
-          onChange={showColor}
+          onChange={showColorFromPicker}
         />
       </div>
     </main>
