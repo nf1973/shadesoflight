@@ -28,6 +28,30 @@
   color: #333;
 }
 
+.colorpicker {
+  display: flex;
+  font-size: 0.8rem;
+  color: #333;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.colorpicker input[type="color"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 3rem;
+  width: 25.05rem;
+}
+
 .pallette {
   display: flex;
   flex-direction: column;
@@ -44,12 +68,12 @@
 
 .swatch {
   flex: 1 1 auto;
-  text-transform: lowercase;
-  padding: 2rem 4rem;
+  text-transform: uppercase;
+  padding: 0.5rem 4rem;
   text-align: center;
   color: white;
   margin: 0.2rem;
-  font-family: inherit;
+  font-family: courier;
   font-weight: 300;
   cursor: pointer;
 }
@@ -63,11 +87,6 @@
   text-align: center;
   font-family: inherit;
   font-size: 0.8rem;
-  color: #333;
+  color: rgb(140, 140, 140);
   padding-top: 16px;
-}
-
-.footer a {
-  color: #333;
-  text-decoration: none;
 }
